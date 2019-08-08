@@ -8,17 +8,12 @@ namespace Avaliacao09_08_.Entidades
         public int ID { get; set;} 
         public string Nome { get; set; }
 
-        public void Cadastro(List<Cliente> clientes)
+        public virtual void Cadastro<T>(List<T> clientes)
         {
-            Console.WriteLine("Digite o Nome do cliente");
+            Console.WriteLine($"Digite o Nome do {this.GetType().Name}");
             Nome = Console.ReadLine().ToUpper();
             //Auto Incremeta o ID
             ID = clientes.Count + 1;
-            if (clientes.Find(x => x.Nome == Nome) != null)
-            {
-                Console.WriteLine("O Cliente ja existe");
-                Cadastro(clientes);
-            }
         }
         public override string ToString() => $"ID: {ID}, Nome:{Nome}";
     }

@@ -8,6 +8,7 @@ namespace Avaliacao09_08_.Service
 {
     class Show
     {
+        #region TELA
         public void ShowTela(List<Produto> produtos, List<Cliente> clientes, List<Pedido> pedidos)
         {
             while (true)
@@ -19,19 +20,19 @@ namespace Avaliacao09_08_.Service
                 {
                     case "1":
                         {
-                            Cliente ele = new Cliente();
-                            ele.Cadastro(clientes);
-                            clientes.Add(ele);
-                            ArqC(clientes);
-                            break;
+                           Cliente ele = new Cliente();
+                           ele.Cadastro(clientes);
+                           clientes.Add(ele);
+                           ArqC(clientes);
+                           break;
                         }
                     case "2":
                         {
-                            Produto produto = new Produto();
-                            produto.PCadastro(produtos);
-                            produtos.Add(produto);
-                            ArqPro(produtos);
-                            break;
+                           Produto produto = new Produto();
+                           produto.Cadastro(produtos);
+                           produtos.Add(produto);
+                           ArqPro(produtos);
+                           break;
                         }
                     case "3":
                         {
@@ -47,23 +48,24 @@ namespace Avaliacao09_08_.Service
                 }
             }
         }
+        #endregion
         #region Arquivos e Escrita de lista
         //Escrita do Arquivo Produtos
-        public void ArqPro(List<Produto> produtos)
+        private void ArqPro(List<Produto> produtos)
         {
             string path = @"C:\JSON\Produtos.json";
             string G = JsonConvert.SerializeObject(produtos,Formatting.Indented);
             using (StreamWriter a = File.CreateText(path)) { a.Write(G); }
         }
         //Escrita do Arquivo Pedidos
-        public void ArqPed(List<Pedido> pedidos)
+        private void ArqPed(List<Pedido> pedidos)
         {
             string path3 = @"C:\JSON\Pedidos.json";
             string G = JsonConvert.SerializeObject(pedidos,Formatting.Indented);
             using (StreamWriter a = File.CreateText(path3)) { a.Write(G); }
         }
         //Escrita do Arquivo Cliente
-        public void ArqC(List<Cliente> clientes)
+        private void ArqC(List<Cliente> clientes)
         {
             string path2 = @"C:\JSON\Clientes.json";
             string G = JsonConvert.SerializeObject(clientes,Formatting.Indented);

@@ -7,7 +7,7 @@ namespace Avaliacao09_08_.Entidades
     {
         public int Nota { get; set; }
         public DateTime Date { get;set; }
-        public Cliente _Cliente { get; set; }
+        public Cliente cliente { get; set; }
         public List<Produto> Compras = new List<Produto>();
         public double ValorTotal { get; set; }
         public void NovoPedido(List<Produto> produtos, List<Cliente> clientes, List<Pedido> pedidos)
@@ -17,14 +17,14 @@ namespace Avaliacao09_08_.Entidades
             Date = DateTime.Now;
             //ID 
             Nota = pedidos.Count+1;
-            //caso o cliente não exista
-            while (_Cliente == null)
+            //caso o cliente seja digitado errado
+            while (cliente == null)
             {
                 //lista de clientes cadastrado
                 Print(clientes);
                 Console.WriteLine("Digite o numero do ID do cliente");
                 Int32.TryParse(Console.ReadLine(), out NO);
-                _Cliente = clientes.Find(x => x.ID == NO);
+                cliente = clientes.Find(x => x.ID == NO);
             }
             string s = "S";
             //Listar produto para compra
@@ -59,7 +59,7 @@ namespace Avaliacao09_08_.Entidades
             ValorTotal=ValorTotalDoPedido();
             Console.WriteLine(ToString());
         }
-        public override string ToString() => $"\nID: {Nota}\nNome do Cliente:{_Cliente.Nome}\nValor Total:{ValorTotal.ToString("F2")}\nData:{Date.ToString("dd/MM/yyyy HH:mm:ss")}\nProdutos Comprados {Lista()}";
+        public override string ToString() => $"\nID: {Nota}\nNome do Cliente:{cliente.Nome}\nValor Total:{ValorTotal.ToString("F2")}\nData:{Date.ToString("dd/MM/yyyy HH:mm:ss")}\nProdutos Comprados {Lista()}";
         //Calculo do valor total
         public double ValorTotalDoPedido()
         {
