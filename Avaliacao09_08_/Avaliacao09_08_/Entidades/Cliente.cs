@@ -10,7 +10,7 @@ namespace Avaliacao09_08_.Entidades
 
         public virtual void Cadastro<T>(List<T> clientes)
         {
-            Console.WriteLine($"Digite o Nome do {this.GetType().Name}");
+            Console.WriteLine($"Digite o Nome do {GetType().Name}");
             Nome = Console.ReadLine().ToUpper();
             //Auto Incremeta o ID
             ID = clientes.Count + 1;

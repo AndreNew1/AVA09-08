@@ -20,7 +20,7 @@ namespace Avaliacao09_08_.Entidades
             }
             Valor = NO;
         }
-        public override string ToString() => "ID: " + ID + "\nNome: " + Nome + "\nValor: " + Valor.ToString("F2");
+        public override string ToString() => $"ID: {ID}, Nome: {Nome}, Valor: {Valor.ToString("F2")}";
         //Calculo do produto
         public double ValorTotal()=> Valor * Quantidades;
         
