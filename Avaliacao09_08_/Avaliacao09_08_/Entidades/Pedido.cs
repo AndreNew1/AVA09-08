@@ -65,11 +65,12 @@ namespace Avaliacao09_08_.Entidades
         {
             while (G <= 0||G>ts.Count)
             {
-                Console.Clear();
                 Print(ts);
                 Console.WriteLine(M);
                 Int32.TryParse(Console.ReadLine(), out int N);
                 G = N;
+                Console.Clear();
+                if (G <= 0 || G > ts.Count) Console.WriteLine("ID Invalido");
             }
         }
         //Impressão
